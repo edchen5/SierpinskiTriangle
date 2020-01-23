@@ -1,10 +1,10 @@
 int lenSize = 10;
 
-
 public void setup()
 {
 	size(500, 500);
 	background(0);
+	frameRate(10);
 }
 
 public void draw()
@@ -12,6 +12,10 @@ public void draw()
 
 	if(lenSize < 500)
 		lenSize ++;
+	if(lenSize % 2 == 0)
+		fill(255, 0, 255);
+	else 
+		fill(0, 255, 255);
 
 	sierpinski(0, 500, lenSize);
 }
@@ -34,9 +38,7 @@ public void sierpinski(int x, int y, int len)
 {
 
 	if(len <= 10)
-	{
 		triangle(x, y, x + len / 2, y + len, x - len / 2, y + len);
-	}
 	else 
 	{
 		/*
