@@ -9,28 +9,33 @@ int carpetSize = 10;
 
 public void setup()
 {
-	size(600, 600);
-	background(0);
+	size(600, 600);	
 }
 
 public void draw()
 {
-	if(change == false && lenSize < 515)
-		lenSize ++;
+	background(r, g, b);
+
+	if(change == false && lenSize < 600)
+		lenSize += 5;
 
 	if(change == true && carpetSize < 305)
-		carpetSize ++;
+		carpetSize += 5;
 
 	if(change == false)
 	{
-		fill(r, g, b);
-		//sierpinski(5, 595, lenSize);
-		fill(b, g, r);
+		strokeWeight(0);
+		stroke(0);
 		backgroundCarpet(1, 595, 600);
+		
+		fill(0);
+		strokeWeight(2);
+		stroke(255);
+		sierpinski(5, 595, lenSize);
 	}
 	else 
 	{
-		background(0);
+		stroke(0);
 		carpet(300, 300, carpetSize);
 	}
 }
@@ -42,7 +47,7 @@ public void mouseDragged()//optional
 
 public void keyPressed()
 {
-	if(lenSize >= 590 || carpetSize >= 305)
+	if(lenSize >= 600 || carpetSize >= 305)
 	{
 		background(0);
 		lenSize = 10;
@@ -91,14 +96,14 @@ public void backgroundCarpet(int x, int y, int len) {
 		rect(x, y, len, len);
 	else 
 	{
-		carpet(x, y, len / 3);
-		carpet(x, y - len / 3, len / 3);
-		carpet(x, y - 2 * len / 3, len / 3);
-		carpet(x + len / 3, y, len / 3);
-		carpet(x + len / 3, y - 2 * len / 3, len / 3);
-		carpet(x + 2 * len / 3, y, len / 3);
-		carpet(x + 2 * len / 3, y - len / 3, len / 3);
-		carpet(x + 2 * len / 3, y - 2 * len / 3, len / 3);
+		backgroundCarpet(x, y, len / 3);
+		backgroundCarpet(x, y - len / 3, len / 3);
+		backgroundCarpet(x, y - 2 * len / 3, len / 3);
+		backgroundCarpet(x + len / 3, y, len / 3);
+		backgroundCarpet(x + len / 3, y - 2 * len / 3, len / 3);
+		backgroundCarpet(x + 2 * len / 3, y, len / 3);
+		backgroundCarpet(x + 2 * len / 3, y - len / 3, len / 3);
+		backgroundCarpet(x + 2 * len / 3, y - 2 * len / 3, len / 3);
 	}
 }
 
