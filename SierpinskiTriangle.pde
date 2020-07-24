@@ -16,13 +16,13 @@ public void draw()
 {
 	background(r, g, b);
 
-	if(change == false && lenSize < 600)
+	if(!change && lenSize < 600)
 		lenSize += 5;
 
-	if(change == true && carpetSize < 305)
+	if(change && carpetSize < 305)
 		carpetSize += 5;
 
-	if(change == false)
+	if(!change)
 	{
 		strokeWeight(0);
 		stroke(0);
@@ -60,21 +60,20 @@ public void keyPressed()
 
 public void mousePressed()
 {
+	background(0);
 	r = (int)(Math.random() * 255);
 	g = (int)(Math.random() * 255);
 	b = (int)(Math.random() * 255);
 
-	if(change == false)
+	if(!change)
 	{
-		background(0);
 		lenSize = 10;
-		change = true;
+		change = !change;
 	}
 	else  
 	{
-		background(0);
 		carpetSize = 10;
-		change = false;
+		change = !change;
 	}	
 }
 
